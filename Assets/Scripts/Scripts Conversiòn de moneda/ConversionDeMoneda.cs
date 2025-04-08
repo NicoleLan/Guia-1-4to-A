@@ -9,21 +9,26 @@ public class ConversionDeMoneda : MonoBehaviour
     float cotizacionMoneda;
     float resultadoTotal;
 
+    float cotizacionDolar = 1200;
+    float cotizacionEuro = 1500;
+    float cotizacionReal = 200;
+    float minimoAConvertir = 1000;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         // 2.Ingreso y validación de datos
-
-        if (cantidadPesos < 1000) {
+        if (cantidadPesos < minimoAConvertir) {
             Debug.Log("El monto mínimo es $1000");
             return;
         }
         if (codigoMoneda == "D"){
-            cotizacionMoneda = 1200;
+            cotizacionMoneda = cotizacionDolar;
         } else if (codigoMoneda == "E"){
-            cotizacionMoneda = 1500;
+            cotizacionMoneda = cotizacionEuro;
         }else if (codigoMoneda == "R"){
-            cotizacionMoneda = 200;
+            cotizacionMoneda = cotizacionReal;
         }else {
             Debug.Log("Opción de moneda no válida");
             return;
@@ -31,12 +36,10 @@ public class ConversionDeMoneda : MonoBehaviour
 
 
         // 3. Procesamiento de los datos
-
         resultadoTotal = cantidadPesos / cotizacionMoneda;
 
 
         // 4. Salida de los datos
-
         Debug.Log("Monto convertido: " + resultadoTotal);
  
     }
